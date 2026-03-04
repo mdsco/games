@@ -1,0 +1,189 @@
+/* Flappy Bird-specific styles */
+
+.game-container {
+    max-width: 700px;
+}
+
+.game-content {
+    display: flex;
+    gap: 30px;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 180px;
+}
+
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls-section h2 {
+    font-size: 1em;
+    color: #00bfff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.game-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Canvas */
+#game-canvas {
+    border: 4px solid #00bfff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 191, 255, 0.5);
+    background: #70c5ce;
+    cursor: pointer;
+    display: block;
+}
+
+/* Overlays */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    max-width: 300px;
+}
+
+.overlay h2 {
+    font-size: 2.5em;
+    color: #00bfff;
+    margin-bottom: 20px;
+}
+
+.overlay p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.overlay .instructions {
+    font-size: 1em;
+    color: #666;
+    font-style: italic;
+}
+
+/* New record */
+.new-record {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.3em;
+    animation: glow 1s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+    }
+    50% {
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+    }
+}
+
+/* Override theme colors for Flappy Bird */
+.game-header h1 {
+    color: #00bfff;
+}
+
+.info-box h2 {
+    color: #00bfff;
+}
+
+.key {
+    background: #00bfff;
+}
+
+#restart-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00bfff 0%, #0099cc 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+#restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+}
+
+#restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .game-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-panel {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 400px;
+    }
+
+    .info-box {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .controls-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .game-header h1 {
+        font-size: 2em;
+    }
+
+    #game-canvas {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+    }
+
+    .overlay {
+        max-width: 250px;
+        padding: 30px 20px;
+    }
+
+    .overlay h2 {
+        font-size: 2em;
+    }
+
+    .overlay p {
+        font-size: 1em;
+    }
+
+    .control-item {
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire Game</title>
+    <link rel="stylesheet" href="../../shared/common.css">
+    <link rel="stylesheet" href="solitaire.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>SOLITAIRE</h1>
+        </div>
+
+        <div class="game-content">
+            <div class="side-panel">
+                <div class="info-box">
+                    <h2>Score</h2>
+                    <div id="score">0</div>
+                </div>
+                <div class="info-box">
+                    <h2>Moves</h2>
+                    <div id="moves">0</div>
+                </div>
+                <div class="info-box">
+                    <h2>Time</h2>
+                    <div id="time">0:00</div>
+                </div>
+
+                <div class="controls-section">
+                    <button id="new-game-btn" class="action-btn">New Game</button>
+                    <button id="undo-btn" class="action-btn secondary-btn">Undo</button>
+                    <button id="hint-btn" class="action-btn secondary-btn">Hint</button>
+                    <a href="../../dashboard.html" class="back-btn">← Back to Menu</a>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <!-- Top area: Stock, Waste, and Foundations -->
+                <div class="top-row">
+                    <div class="stock-waste">
+                        <div id="stock" class="card-pile stock-pile"></div>
+                        <div id="waste" class="card-pile waste-pile"></div>
+                    </div>
+
+                    <div class="foundations">
+                        <div id="foundation-0" class="card-pile foundation-pile" data-suit="hearts"></div>
+                        <div id="foundation-1" class="card-pile foundation-pile" data-suit="diamonds"></div>
+                        <div id="foundation-2" class="card-pile foundation-pile" data-suit="clubs"></div>
+                        <div id="foundation-3" class="card-pile foundation-pile" data-suit="spades"></div>
+                    </div>
+                </div>
+
+                <!-- Bottom area: Tableau (7 columns) -->
+                <div class="tableau">
+                    <div id="tableau-0" class="card-pile tableau-pile"></div>
+                    <div id="tableau-1" class="card-pile tableau-pile"></div>
+                    <div id="tableau-2" class="card-pile tableau-pile"></div>
+                    <div id="tableau-3" class="card-pile tableau-pile"></div>
+                    <div id="tableau-4" class="card-pile tableau-pile"></div>
+                    <div id="tableau-5" class="card-pile tableau-pile"></div>
+                    <div id="tableau-6" class="card-pile tableau-pile"></div>
+                </div>
+
+                <!-- Game Over overlay -->
+                <div id="game-over" class="game-over hidden">
+                    <h2>🎉 You Win!</h2>
+                    <p>Congratulations!</p>
+                    <p>Score: <span id="final-score">0</span></p>
+                    <p>Moves: <span id="final-moves">0</span></p>
+                    <p>Time: <span id="final-time">0:00</span></p>
+                    <button id="restart-btn">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="solitaire.js"></script>
+</body>
+</html>

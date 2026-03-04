@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="../../shared/common.css">
+    <link rel="stylesheet" href="sudoku.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>SUDOKU</h1>
+        </div>
+
+        <div class="game-content">
+            <div class="side-panel">
+                <div class="info-box">
+                    <h2>Difficulty</h2>
+                    <div id="difficulty">Easy</div>
+                </div>
+                <div class="info-box">
+                    <h2>Time</h2>
+                    <div id="time">0:00</div>
+                </div>
+                <div class="info-box">
+                    <h2>Mistakes</h2>
+                    <div id="mistakes">0 / 3</div>
+                </div>
+
+                <div class="controls-section">
+                    <h2>Difficulty</h2>
+                    <select id="difficulty-select" class="difficulty-select">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+
+                    <button id="new-game-btn" class="action-btn">New Game</button>
+                    <button id="hint-btn" class="action-btn secondary-btn">Hint</button>
+                    <button id="check-btn" class="action-btn secondary-btn">Check</button>
+                    <a href="../../dashboard.html" class="back-btn">← Back to Menu</a>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div id="sudoku-board" class="sudoku-board"></div>
+
+                <!-- Number pad for mobile -->
+                <div class="number-pad">
+                    <button class="number-btn" data-number="1">1</button>
+                    <button class="number-btn" data-number="2">2</button>
+                    <button class="number-btn" data-number="3">3</button>
+                    <button class="number-btn" data-number="4">4</button>
+                    <button class="number-btn" data-number="5">5</button>
+                    <button class="number-btn" data-number="6">6</button>
+                    <button class="number-btn" data-number="7">7</button>
+                    <button class="number-btn" data-number="8">8</button>
+                    <button class="number-btn" data-number="9">9</button>
+                    <button class="number-btn erase-btn" data-number="0">
+                        <span>Erase</span>
+                    </button>
+                </div>
+
+                <!-- Win overlay -->
+                <div id="game-win" class="game-over hidden">
+                    <h2>🎉 Congratulations! 🎉</h2>
+                    <p>You solved the puzzle!</p>
+                    <p>Time: <span id="final-time">0:00</span></p>
+                    <p>Difficulty: <span id="final-difficulty">Easy</span></p>
+                    <button id="restart-btn">New Puzzle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sudoku.js"></script>
+</body>
+</html>

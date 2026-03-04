@@ -1,0 +1,283 @@
+/* Sudoku-specific styles */
+
+.game-container {
+    max-width: 900px;
+}
+
+.game-content {
+    display: flex;
+    gap: 30px;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 180px;
+}
+
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls-section h2 {
+    font-size: 1em;
+    color: #9333ea;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.difficulty-select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #9333ea;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    background: white;
+    color: #333;
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    font-size: 1em;
+    padding: 10px;
+}
+
+.game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+/* Sudoku Board */
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    gap: 1px;
+    background: #333;
+    border: 3px solid #333;
+    box-shadow: 0 5px 20px rgba(147, 51, 234, 0.3);
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+.cell:hover {
+    background: #f0f0f0;
+}
+
+.cell.selected {
+    background: #e9d5ff !important;
+    box-shadow: inset 0 0 0 2px #9333ea;
+}
+
+.cell.given {
+    background: #f3f4f6;
+    color: #1f2937;
+    cursor: default;
+}
+
+.cell.given:hover {
+    background: #f3f4f6;
+}
+
+.cell.filled {
+    color: #9333ea;
+}
+
+.cell.hint {
+    background: #86efac !important;
+    animation: hint-flash 0.5s ease-in-out;
+}
+
+.cell.error {
+    background: #fca5a5 !important;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Thick borders for 3x3 boxes */
+.cell.border-top {
+    border-top: 3px solid #333;
+}
+
+.cell.border-left {
+    border-left: 3px solid #333;
+}
+
+/* Number pad */
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    gap: 10px;
+}
+
+.number-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    background: white;
+    border: 2px solid #9333ea;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #9333ea;
+}
+
+.number-btn:hover {
+    background: #f3e8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(147, 51, 234, 0.3);
+}
+
+.number-btn:active {
+    transform: translateY(0);
+}
+
+.number-btn.erase-btn {
+    grid-column: span 2;
+    width: 130px;
+    font-size: 16px;
+    background: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}
+
+.number-btn.erase-btn:hover {
+    background: #b91c1c;
+}
+
+/* Animations */
+@keyframes hint-flash {
+    0%, 100% {
+        background: #86efac;
+    }
+    50% {
+        background: #22c55e;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Override theme colors for Sudoku */
+.game-header h1 {
+    color: #9333ea;
+}
+
+.info-box h2 {
+    color: #9333ea;
+}
+
+.key {
+    background: #9333ea;
+}
+
+#restart-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+#restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(147, 51, 234, 0.4);
+}
+
+#restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .game-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-panel {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 470px;
+    }
+
+    .info-box {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    .controls-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-header h1 {
+        font-size: 2em;
+    }
+
+    .sudoku-board {
+        grid-template-columns: repeat(9, 35px);
+        grid-template-rows: repeat(9, 35px);
+    }
+
+    .cell {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .number-pad {
+        grid-template-columns: repeat(5, 50px);
+        gap: 8px;
+    }
+
+    .number-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .number-btn.erase-btn {
+        width: 108px;
+        font-size: 14px;
+    }
+}

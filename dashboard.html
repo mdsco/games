@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Games</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>🕹️ ARCADE GAMES</h1>
+            <p>Choose your game and start playing!</p>
+        </header>
+
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-icon tetris-icon">
+                    <div class="tetris-blocks">
+                        <div class="block" style="background: #00f0f0;"></div>
+                        <div class="block" style="background: #f0f000;"></div>
+                        <div class="block" style="background: #a000f0;"></div>
+                        <div class="block" style="background: #f00000;"></div>
+                    </div>
+                </div>
+                <h2>Tetris</h2>
+                <p class="game-description">Classic block-stacking puzzle game. Rotate and arrange falling pieces to clear lines!</p>
+                <div class="game-stats">
+                    <span>⭐ Classic</span>
+                    <span>🎮 Arcade</span>
+                </div>
+                <a href="games/tetris/tetris.html" class="play-button">Play Now</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon snake-icon">
+                    <div class="snake-preview">
+                        <div class="snake-segment"></div>
+                        <div class="snake-segment"></div>
+                        <div class="snake-segment"></div>
+                        <div class="food"></div>
+                    </div>
+                </div>
+                <h2>Snake</h2>
+                <p class="game-description">Guide the snake to eat food and grow longer. Don't hit the walls or yourself!</p>
+                <div class="game-stats">
+                    <span>⭐ Retro</span>
+                    <span>🎮 Arcade</span>
+                </div>
+                <a href="games/snake/snake.html" class="play-button">Play Now</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon solitaire-icon">
+                    <div class="card-display">
+                        <div class="mini-card red">A♥</div>
+                        <div class="mini-card black">K♠</div>
+                        <div class="mini-card red">Q♦</div>
+                    </div>
+                </div>
+                <h2>Solitaire</h2>
+                <p class="game-description">Classic Klondike card game. Stack cards in descending order and win by moving all cards to foundations!</p>
+                <div class="game-stats">
+                    <span>⭐ Classic</span>
+                    <span>🃏 Cards</span>
+                </div>
+                <a href="games/solitaire/solitaire.html" class="play-button">Play Now</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon game-2048-icon">
+                    <div class="tiles-2048">
+                        <div class="mini-tile tile-2">2</div>
+                        <div class="mini-tile tile-4">4</div>
+                        <div class="mini-tile tile-8">8</div>
+                        <div class="mini-tile tile-16">16</div>
+                    </div>
+                </div>
+                <h2>2048</h2>
+                <p class="game-description">Slide numbered tiles to combine them and reach 2048! Addictive puzzle gameplay with smooth animations.</p>
+                <div class="game-stats">
+                    <span>⭐ Puzzle</span>
+                    <span>🧩 Strategy</span>
+                </div>
+                <a href="games/2048/2048.html" class="play-button">Play Now</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon flappy-bird-icon">
+                    <div class="bird-display">
+                        <div class="mini-bird"></div>
+                        <div class="mini-pipe"></div>
+                    </div>
+                </div>
+                <h2>Flappy Bird</h2>
+                <p class="game-description">Tap to flap through the pipes! Addictive one-button arcade action with physics-based gameplay.</p>
+                <div class="game-stats">
+                    <span>⭐ Arcade</span>
+                    <span>🕹️ Action</span>
+                </div>
+                <a href="games/flappy-bird/flappy-bird.html" class="play-button">Play Now</a>
+            </div>
+
+            <div class="game-card">
+                <div class="game-icon sudoku-icon">
+                    <div class="sudoku-grid">
+                        <div class="mini-sudoku-cell">5</div>
+                        <div class="mini-sudoku-cell">3</div>
+                        <div class="mini-sudoku-cell"></div>
+                        <div class="mini-sudoku-cell"></div>
+                        <div class="mini-sudoku-cell">7</div>
+                        <div class="mini-sudoku-cell"></div>
+                        <div class="mini-sudoku-cell"></div>
+                        <div class="mini-sudoku-cell"></div>
+                        <div class="mini-sudoku-cell">9</div>
+                    </div>
+                </div>
+                <h2>Sudoku</h2>
+                <p class="game-description">Classic number puzzle! Fill the grid so each row, column, and 3x3 box contains digits 1-9.</p>
+                <div class="game-stats">
+                    <span>⭐ Puzzle</span>
+                    <span>🧠 Logic</span>
+                </div>
+                <a href="games/sudoku/sudoku.html" class="play-button">Play Now</a>
+            </div>
+        </div>
+
+        <footer class="dashboard-footer">
+            <p>More games coming soon!</p>
+        </footer>
+    </div>
+</body>
+</html>

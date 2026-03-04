@@ -1,0 +1,352 @@
+/* 2048-specific styles */
+
+.game-container {
+    max-width: 800px;
+}
+
+.game-content {
+    display: flex;
+    gap: 30px;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 180px;
+}
+
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.controls-section h2 {
+    font-size: 1em;
+    color: #f59f0b;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.game-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Game board */
+.board {
+    position: relative;
+    width: 515px;
+    height: 515px;
+    background: #bbada0;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.grid-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 485px;
+    height: 485px;
+    display: grid;
+    grid-template-columns: repeat(4, 110px);
+    grid-template-rows: repeat(4, 110px);
+    gap: 15px;
+    z-index: 1;
+}
+
+.grid-cell {
+    background: rgba(238, 228, 218, 0.35);
+    border-radius: 5px;
+}
+
+.tile-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 485px;
+    height: 485px;
+    z-index: 2;
+}
+
+/* Tiles */
+.tile {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: #eee4da;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #776e65;
+    transition: left 0.15s ease-in-out, top 0.15s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tile-new {
+    animation: appear 0.2s ease-in-out;
+}
+
+.tile-merged {
+    animation: pop 0.2s ease-in-out;
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Tile colors */
+.tile-2 {
+    background: #eee4da;
+    color: #776e65;
+    font-size: 48px;
+}
+
+.tile-4 {
+    background: #ede0c8;
+    color: #776e65;
+    font-size: 48px;
+}
+
+.tile-8 {
+    background: #f2b179;
+    color: #f9f6f2;
+    font-size: 48px;
+}
+
+.tile-16 {
+    background: #f59563;
+    color: #f9f6f2;
+    font-size: 48px;
+}
+
+.tile-32 {
+    background: #f67c5f;
+    color: #f9f6f2;
+    font-size: 48px;
+}
+
+.tile-64 {
+    background: #f65e3b;
+    color: #f9f6f2;
+    font-size: 44px;
+}
+
+.tile-128 {
+    background: #edcf72;
+    color: #f9f6f2;
+    font-size: 40px;
+    box-shadow: 0 3px 10px rgba(237, 207, 114, 0.5);
+}
+
+.tile-256 {
+    background: #edcc61;
+    color: #f9f6f2;
+    font-size: 40px;
+    box-shadow: 0 3px 10px rgba(237, 204, 97, 0.5);
+}
+
+.tile-512 {
+    background: #edc850;
+    color: #f9f6f2;
+    font-size: 40px;
+    box-shadow: 0 3px 10px rgba(237, 200, 80, 0.5);
+}
+
+.tile-1024 {
+    background: #edc53f;
+    color: #f9f6f2;
+    font-size: 32px;
+    box-shadow: 0 3px 15px rgba(237, 197, 63, 0.6);
+}
+
+.tile-2048 {
+    background: #edc22e;
+    color: #f9f6f2;
+    font-size: 32px;
+    box-shadow: 0 3px 15px rgba(237, 194, 46, 0.7);
+    animation: win-glow 1s ease-in-out infinite;
+}
+
+.tile-4096 {
+    background: #3c3a32;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-8192 {
+    background: #3c3a32;
+    color: #f9f6f2;
+    font-size: 24px;
+}
+
+@keyframes win-glow {
+    0%, 100% {
+        box-shadow: 0 3px 15px rgba(237, 194, 46, 0.7);
+    }
+    50% {
+        box-shadow: 0 5px 25px rgba(237, 194, 46, 1);
+    }
+}
+
+/* Game over / win styling */
+.new-best {
+    color: #f59f0b;
+    font-weight: bold;
+    font-size: 1.2em;
+    animation: pulse-text 0.5s ease-in-out 3;
+}
+
+@keyframes pulse-text {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+#continue-btn {
+    background: linear-gradient(135deg, #f59f0b 0%, #d97706 100%);
+    margin-bottom: 10px;
+}
+
+#continue-btn:hover {
+    box-shadow: 0 5px 15px rgba(245, 159, 11, 0.4);
+}
+
+#win-restart-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#win-restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+#win-restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Override theme colors for 2048 */
+.game-header h1 {
+    color: #f59f0b;
+}
+
+.info-box h2 {
+    color: #f59f0b;
+}
+
+.key {
+    background: #f59f0b;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .game-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-panel {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 515px;
+    }
+
+    .info-box {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .controls-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-header h1 {
+        font-size: 2em;
+    }
+
+    .board {
+        width: 340px;
+        height: 340px;
+        padding: 10px;
+    }
+
+    .grid-container,
+    .tile-container {
+        width: 320px;
+        height: 320px;
+        grid-template-columns: repeat(4, 72.5px);
+        grid-template-rows: repeat(4, 72.5px);
+        gap: 10px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .tile {
+        width: 72.5px;
+        height: 72.5px;
+        font-size: 32px;
+    }
+
+    .tile-2, .tile-4, .tile-8, .tile-16, .tile-32 {
+        font-size: 32px;
+    }
+
+    .tile-64 {
+        font-size: 28px;
+    }
+
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 26px;
+    }
+
+    .tile-1024, .tile-2048 {
+        font-size: 20px;
+    }
+
+    .tile-4096, .tile-8192 {
+        font-size: 18px;
+    }
+}

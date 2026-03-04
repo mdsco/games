@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game</title>
+    <link rel="stylesheet" href="../../shared/common.css">
+    <link rel="stylesheet" href="2048.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>2048</h1>
+        </div>
+
+        <div class="game-content">
+            <div class="side-panel">
+                <div class="info-box">
+                    <h2>Score</h2>
+                    <div id="score">0</div>
+                </div>
+                <div class="info-box">
+                    <h2>Best</h2>
+                    <div id="best-score">0</div>
+                </div>
+                <div class="info-box">
+                    <h2>Moves</h2>
+                    <div id="moves">0</div>
+                </div>
+
+                <div class="controls-section">
+                    <h2>Controls</h2>
+                    <div class="control-item">
+                        <span class="key">←→↑↓</span>
+                        <span>Slide Tiles</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">N</span>
+                        <span>New Game</span>
+                    </div>
+                    <button id="new-game-btn" class="action-btn">New Game</button>
+                    <a href="../../dashboard.html" class="back-btn">← Back to Menu</a>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div id="game-board" class="board">
+                    <div class="grid-container">
+                        <!-- Grid cells (background) -->
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                        <div class="grid-cell"></div>
+                    </div>
+                    <div id="tile-container" class="tile-container"></div>
+                </div>
+
+                <!-- Game Over overlay -->
+                <div id="game-over" class="game-over hidden">
+                    <h2>Game Over!</h2>
+                    <p>Final Score: <span id="final-score">0</span></p>
+                    <p id="new-best" class="new-best hidden">🎉 New Best Score! 🎉</p>
+                    <button id="restart-btn">Try Again</button>
+                </div>
+
+                <!-- Win overlay -->
+                <div id="game-win" class="game-over hidden">
+                    <h2>🎉 You Win! 🎉</h2>
+                    <p>You reached 2048!</p>
+                    <p>Score: <span id="win-score">0</span></p>
+                    <button id="continue-btn" class="action-btn">Keep Playing</button>
+                    <button id="win-restart-btn">New Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="2048.js"></script>
+</body>
+</html>
