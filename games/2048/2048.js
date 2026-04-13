@@ -48,8 +48,8 @@ class Tile {
     }
 
     setPosition(element) {
-        const x = this.col * (CELL_SIZE + CELL_GAP) + CELL_GAP;
-        const y = this.row * (CELL_SIZE + CELL_GAP) + CELL_GAP;
+        const x = this.col * (CELL_SIZE + CELL_GAP);
+        const y = this.row * (CELL_SIZE + CELL_GAP);
         element.style.left = `${x}px`;
         element.style.top = `${y}px`;
     }

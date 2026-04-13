@@ -27,6 +27,10 @@
                     <h2>Time</h2>
                     <div id="time">0:00</div>
                 </div>
+                <div class="info-box">
+                    <h2>Mode</h2>
+                    <div id="mode">Easy</div>
+                </div>
 
                 <div class="controls-section">
                     <button id="new-game-btn" class="action-btn">New Game</button>
@@ -72,6 +76,24 @@
                     <p>Time: <span id="final-time">0:00</span></p>
                     <button id="restart-btn">Play Again</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Difficulty selection modal -->
+    <div id="difficulty-modal" class="difficulty-modal">
+        <div class="difficulty-content">
+            <h2>Solitaire</h2>
+            <p>Choose your difficulty:</p>
+            <div class="difficulty-buttons">
+                <button id="easy-btn" class="difficulty-btn easy-btn">
+                    <div class="diff-title">Easy</div>
+                    <div class="diff-desc">Draw 1 card at a time</div>
+                </button>
+                <button id="hard-btn" class="difficulty-btn hard-btn">
+                    <div class="diff-title">Hard</div>
+                    <div class="diff-desc">Draw 3 cards at a time</div>
+                </button>
             </div>
         </div>
     </div>

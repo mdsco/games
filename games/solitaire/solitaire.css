@@ -32,6 +32,7 @@
     flex: 1;
     position: relative;
     min-height: 600px;
+    margin-top: 50px;
 }
 
 /* Card styling */
@@ -43,6 +44,7 @@
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     user-select: none;
+    touch-action: none;
 }
 
 .card.face-up {
@@ -238,7 +240,7 @@
 }
 
 .drag-ghost .card {
-    position: relative;
+    position: absolute;
 }
 
 /* Hint highlighting */
@@ -270,6 +272,89 @@
     }
 }
 
+/* Draw-three waste pile: wider to accommodate fanned cards */
+.waste-pile.draw-three {
+    width: 120px;
+}
+
+/* Difficulty modal */
+.difficulty-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.difficulty-modal.hidden {
+    display: none;
+}
+
+.difficulty-content {
+    background: white;
+    border-radius: 16px;
+    padding: 40px 48px;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+    max-width: 420px;
+    width: 90%;
+}
+
+.difficulty-content h2 {
+    font-size: 2em;
+    color: #c41e3a;
+    margin: 0 0 8px;
+}
+
+.difficulty-content p {
+    color: #555;
+    margin: 0 0 28px;
+    font-size: 1.05em;
+}
+
+.difficulty-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.difficulty-btn {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    color: white;
+    font-family: inherit;
+}
+
+.difficulty-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.difficulty-btn.easy-btn {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+}
+
+.difficulty-btn.hard-btn {
+    background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+}
+
+.diff-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.diff-desc {
+    font-size: 0.85em;
+    opacity: 0.9;
+}
+
 /* Override theme colors for Solitaire */
 .game-header h1 {
     color: #c41e3a;
@@ -288,6 +373,19 @@
 }
 
 @media (max-width: 1024px) {
+    .game-container {
+        padding: 15px 20px;
+    }
+
+    .game-header {
+        margin-bottom: 10px;
+    }
+
+    .game-header h1 {
+        font-size: 1.8em;
+        letter-spacing: 4px;
+    }
+
     .game-content {
         flex-direction: column;
     }
@@ -296,23 +394,39 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+        gap: 8px;
     }
 
     .info-box {
         flex: 1;
-        min-width: 120px;
+        min-width: 80px;
+        padding: 6px 10px;
+    }
+
+    .info-box h2 {
+        font-size: 0.7em;
+        margin-bottom: 3px;
+        letter-spacing: 1px;
+    }
+
+    .info-box div:not(canvas) {
+        font-size: 1.2em;
     }
 
     .controls-section {
         width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
+        gap: 6px;
     }
 
     .controls-section button,
     .controls-section a {
         flex: 1;
-        min-width: 120px;
+        min-width: 80px;
+        padding: 8px 10px;
+        font-size: 0.9em;
+        margin-top: 0;
     }
 
     .tableau {
@@ -336,12 +450,25 @@
 }
 
 @media (max-width: 768px) {
+    body {
+        align-items: unset;
+    }
+
+    .game-container {
+        padding: 10px 15px;
+    }
+
+    .game-header {
+        margin-bottom: 6px;
+    }
+
     .game-header h1 {
-        font-size: 2em;
+        font-size: 1.4em;
+        letter-spacing: 3px;
     }
 
     .top-row {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 20px;
         margin-bottom: 20px;
     }
@@ -356,7 +483,7 @@
 
     .tableau {
         gap: 3px;
-        overflow-x: auto;
+        /* overflow-x: auto; */
     }
 
     .tableau-pile {
@@ -366,6 +493,22 @@
     .card {
         width: 60px;
         height: 84px;
+    }
+
+    .foundation-pile.card-pile,
+    .stock-pile.card-pile,
+    .waste-pile.card-pile,
+    .card-placeholder.reload {
+        min-height: 84px;
+    }
+
+    .card-placeholder {
+        height: 84px;
+        width: 60px;
+    }
+
+    .foundation-pile, .stock-pile, .waste-pile {
+        width: 60px;
     }
 
     .card-center {
@@ -378,5 +521,87 @@
 
     .card-corner .suit {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 499px) {
+    body {
+        padding: 6px;
+    }
+
+    .game-container {
+        padding: 8px;
+        border-radius: 12px;
+    }
+
+    .card {
+        width: 50px;
+        height: 70px;
+    }
+
+    .card.face-up {
+        padding: 3px;
+    }
+
+    .tableau {
+        margin-top: 50px;
+        gap: 5px;
+    }
+
+    .tableau-pile {
+        width: 50px;
+        min-height: 300px;
+    }
+
+    .foundation-pile,
+    .stock-pile,
+    .waste-pile {
+        width: 50px;
+    }
+
+    .waste-pile.draw-three {
+        width: 90px;
+    }
+
+    .card-pile {
+        min-height: 70px;
+    }
+
+    .foundation-pile.card-pile,
+    .stock-pile.card-pile,
+    .waste-pile.card-pile,
+    .card-placeholder.reload {
+        min-height: 70px;
+    }
+
+    .card-placeholder {
+        height: 70px;
+        width: 50px;
+        font-size: 32px;
+    }
+
+    .card-center {
+        font-size: 24px;
+    }
+
+    .card-corner .rank {
+        font-size: 12px;
+    }
+
+    .card-corner .suit {
+        font-size: 16px;
+    }
+
+    .foundations {
+        gap: 5px;
+    }
+
+    .stock-waste {
+        gap: 10px;
+    }
+
+    .top-row {
+        gap: 12px;
+        margin-bottom: 12px;
     }
 }
