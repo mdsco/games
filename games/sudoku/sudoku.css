@@ -250,18 +250,92 @@
 }
 
 @media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+
+    .game-container {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .game-header {
+        margin-bottom: 8px;
+    }
+
     .game-header h1 {
-        font-size: 2em;
+        font-size: 1.5em;
+        letter-spacing: 3px;
+    }
+
+    .game-content {
+        gap: 50px;
+    }
+
+    /* Compact info boxes */
+    .side-panel {
+        gap: 6px;
+    }
+
+    .info-box {
+        padding: 5px 8px;
+        min-width: 0;
+        border-radius: 6px;
+    }
+
+    .info-box h2 {
+        font-size: 0.6em;
+        margin-bottom: 2px;
+        letter-spacing: 1px;
+    }
+
+    .info-box div:not(canvas) {
+        font-size: 1.1em;
+    }
+
+    /* Controls: single flex row — select + all buttons on one line */
+    .controls-section {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: stretch;
+    }
+
+    /* Hide redundant "Difficulty" label — the select is self-explanatory */
+    .controls-section h2 {
+        display: none;
+    }
+
+    .difficulty-select {
+        flex: 1.4;
+        padding: 4px 4px;
+        font-size: 11px;
+        min-width: 0;
+    }
+
+    /* All buttons compact and evenly share remaining space */
+    .controls-section .action-btn,
+    .controls-section .back-btn {
+        flex: 1;
+        padding: 5px 2px;
+        font-size: 0.68em;
+        margin-top: 0;
+        min-width: 0;
+        white-space: nowrap;
+    }
+
+    .game-area {
+        gap: 10px;
     }
 
     .sudoku-board {
-        grid-template-columns: repeat(9, 35px);
-        grid-template-rows: repeat(9, 35px);
+        grid-template-columns: repeat(9, 40px);
+        grid-template-rows: repeat(9, 40px);
     }
 
     .cell {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         font-size: 18px;
     }
 

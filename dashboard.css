@@ -373,11 +373,46 @@ body {
     }
 
     .games-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .game-card {
+        position: relative;
+        padding: 15px;
+    }
+
+    .game-card h2,
+    .game-description,
+    .game-stats {
+        display: none;
     }
 
     .game-icon {
-        width: 120px;
-        height: 120px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        margin-bottom: 0;
+    }
+
+    .play-button {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        background: transparent;
+        font-size: 0;
+        width: auto;
+        padding: 0;
+    }
+
+    .play-button:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
