@@ -1,8 +1,15 @@
 // Game constants
 const GRID_SIZE = 4;
-const CELL_SIZE = 110;
-const CELL_GAP = 15;
 const WIN_VALUE = 2048;
+
+// Compute cell step size from actual DOM dimensions so it works at any viewport size
+function getStepSize() {
+    const board = document.querySelector('.board');
+    const container = document.getElementById('tile-container');
+    // The gap between cells equals the board's padding (both match in CSS at every breakpoint)
+    const gap = (board.offsetWidth - container.offsetWidth) / 2;
+    return (container.offsetWidth + gap) / GRID_SIZE;
+}
 
 // Game state
 let grid = [];
@@ -48,10 +55,9 @@ class Tile {
     }
 
     setPosition(element) {
-        const x = this.col * (CELL_SIZE + CELL_GAP);
-        const y = this.row * (CELL_SIZE + CELL_GAP);
-        element.style.left = `${x}px`;
-        element.style.top = `${y}px`;
+        const step = getStepSize();
+        element.style.left = `${this.col * step}px`;
+        element.style.top = `${this.row * step}px`;
     }
 
     updatePosition() {
@@ -211,6 +217,8 @@ function moveLeft() {
         const tiles = getRow(row);
         const mergedTiles = moveAndMergeTiles(tiles);
 
+        if (mergedTiles.length < tiles.length) moved = true;
+
         // Clear the row
         for (let col = 0; col < GRID_SIZE; col++) {
             grid[row][col] = null;
@@ -237,6 +245,8 @@ function moveRight() {
     for (let row = 0; row < GRID_SIZE; row++) {
         const tiles = getRow(row).reverse();
         const mergedTiles = moveAndMergeTiles(tiles);
+
+        if (mergedTiles.length < tiles.length) moved = true;
 
         // Clear the row
         for (let col = 0; col < GRID_SIZE; col++) {
@@ -266,6 +276,8 @@ function moveUp() {
         const tiles = getColumn(col);
         const mergedTiles = moveAndMergeTiles(tiles);
 
+        if (mergedTiles.length < tiles.length) moved = true;
+
         // Clear the column
         for (let row = 0; row < GRID_SIZE; row++) {
             grid[row][col] = null;
@@ -292,6 +304,8 @@ function moveDown() {
     for (let col = 0; col < GRID_SIZE; col++) {
         const tiles = getColumn(col).reverse();
         const mergedTiles = moveAndMergeTiles(tiles);
+
+        if (mergedTiles.length < tiles.length) moved = true;
 
         // Clear the column
         for (let row = 0; row < GRID_SIZE; row++) {
@@ -461,6 +475,16 @@ restartBtn.addEventListener('click', initGame);
 winRestartBtn.addEventListener('click', initGame);
 continueBtn.addEventListener('click', () => {
     gameWinElement.classList.add('hidden');
+});
+
+// Reposition all tiles when the viewport resizes (e.g. device rotation)
+window.addEventListener('resize', () => {
+    for (let row = 0; row < GRID_SIZE; row++) {
+        for (let col = 0; col < GRID_SIZE; col++) {
+            const tile = grid[row][col];
+            if (tile) tile.setPosition(tile.element);
+        }
+    }
 });
 
 // Initialize
