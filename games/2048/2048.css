@@ -303,50 +303,112 @@
 }
 
 @media (max-width: 600px) {
-    .game-header h1 {
-        font-size: 2em;
+    /* Tighten outer spacing so more room goes to the board */
+    body {
+        padding: 8px;
     }
 
+    .game-container {
+        padding: 12px;
+    }
+
+    .game-header {
+        margin-bottom: 8px;
+    }
+
+    .game-header h1 {
+        font-size: 1.6em;
+        letter-spacing: 4px;
+    }
+
+    /* Reduce gap between side-panel and board */
+    .game-content {
+        gap: 10px;
+    }
+
+    /* Side panel: compact — info boxes stay in a tight row */
+    .side-panel {
+        gap: 6px;
+    }
+
+    .info-box {
+        flex: 1;
+        min-width: 0;   /* override 150px from 900px breakpoint */
+        padding: 6px 8px;
+    }
+
+    .info-box h2 {
+        font-size: 0.65em;
+        margin-bottom: 3px;
+        letter-spacing: 1px;
+    }
+
+    .info-box div:not(canvas) {
+        font-size: 1.3em;
+    }
+
+    /* Controls: hide keyboard hints (useless on touch), show only buttons */
+    .controls-section h2,
+    .control-item {
+        display: none;
+    }
+
+    .controls-section {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .controls-section .action-btn,
+    .controls-section .back-btn {
+        flex: 1;
+        width: auto;
+        padding: 8px 4px;
+        font-size: 0.85em;
+        margin-top: 0;
+    }
+
+    /* Board: slightly smaller to leave vertical breathing room */
     .board {
-        width: 340px;
-        height: 340px;
+        width: 310px;
+        height: 310px;
         padding: 10px;
     }
 
+    /* 4 × 65px cells + 3 × 10px gaps = 290px ✓ */
     .grid-container,
     .tile-container {
-        width: 320px;
-        height: 320px;
-        grid-template-columns: repeat(4, 72.5px);
-        grid-template-rows: repeat(4, 72.5px);
+        width: 290px;
+        height: 290px;
+        grid-template-columns: repeat(4, 65px);
+        grid-template-rows: repeat(4, 65px);
         gap: 10px;
         top: 10px;
         left: 10px;
     }
 
     .tile {
-        width: 72.5px;
-        height: 72.5px;
-        font-size: 32px;
-    }
-
-    .tile-2, .tile-4, .tile-8, .tile-16, .tile-32 {
-        font-size: 32px;
-    }
-
-    .tile-64 {
+        width: 65px;
+        height: 65px;
         font-size: 28px;
     }
 
+    .tile-2, .tile-4, .tile-8, .tile-16, .tile-32 {
+        font-size: 28px;
+    }
+
+    .tile-64 {
+        font-size: 24px;
+    }
+
     .tile-128, .tile-256, .tile-512 {
-        font-size: 26px;
+        font-size: 22px;
     }
 
     .tile-1024, .tile-2048 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .tile-4096, .tile-8192 {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
